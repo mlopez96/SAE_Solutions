@@ -4,11 +4,19 @@ The two controllers are:
 - The Euclidean distance between vehicle and wall (distance error)
 - The Time-to-collision TTC between vehicle and wall (velocity error)   
 
-https://github.com/mlopez96/bootcamp-assignments/assets/26072511/97091476-72a0-4a7d-8d79-9442f6edc22c  
+
+
+https://github.com/mlopez96/SAE_Solutions/assets/26072511/d2cfcbcd-406c-4e9f-9c6a-db7bcfcfa38c
+
+
 
  
 
-https://github.com/mlopez96/bootcamp-assignments/assets/26072511/77ff7751-dace-4dc9-8361-ba931f4c0438  
+
+https://github.com/mlopez96/SAE_Solutions/assets/26072511/c0c69c7d-ec05-425c-a132-69c4067cadae
+
+
+
 
 # Prerequisites
 Running Ubuntu 20.04    

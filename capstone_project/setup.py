@@ -30,6 +30,7 @@ setup(
         'pure_pursuit=capstone_project.pure_pursuit:main',# Insert executable entry point here
         'waypoint_logger=capstone_project.waypoint_logger:main',# Insert executable entry point here
         'tiny_yolov3_lite=capstone_project.classify_tinyyolov3_lite:main',
+        'go_to_waypoint=capstone_project.go_to_waypoint:main', #Insert Executable Here
         ],
     },
 )

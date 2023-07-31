@@ -44,25 +44,30 @@ class LineFollower(Node):
         if self.predictor_label == 'traffic_light':
             self.get_logger().info("Traffic Light detected".format())
             self.billboard_detected = 1
+
         if self.billboard_detected == 1 and self.billboard_stop_counter < 200:
             self.billboard_stop_counter += 1
         
-        if self.billboard_detected == 1 and self.billboard_start_counter < 300 and self.billboard_stop_counter == 200:
+        elif self.billboard_detected == 1 and self.billboard_start_counter < 300 and self.billboard_stop_counter == 200:
             self.billboard_start_counter += 1
             twist_object = Twist()
             twist_object.linear.x = 0.0
             twist_object.angular.z = 0.0
+            self.get_logger().info("Pausing Turtlebot".format())
             #self.get_logger().info("Steering angle: {:.3f}".format(twist_object.angular.z))
-            
             self.pub.publish(twist_object)
-        else:    
+            self.get_logger().info("Line Following Complete".format())
+            LineFollower.destroy_node()
+
+
+        elif self.predictor_label != 'traffic_light':
             try:
                 cv_image = self.image
                 height, width, channels = cv_image.shape
                 crop_img = cv_image[int(height/2)+80:int(height/2)+120][1:width]
                 height, width, channels = crop_img.shape
                 hsv = cv2.cvtColor(crop_img, cv2.COLOR_BGR2HSV)
-                lower_blue = np.array([80, 50, 50])
+                lower_blue = np.array([[80, 50, 50]])
                 upper_blue = np.array([165,255,255])
                 mask = cv2.inRange(hsv, lower_blue, upper_blue)
                 m = cv2.moments(mask, False)
@@ -97,7 +102,10 @@ class LineFollower(Node):
                 twist_object.angular.z = 0.0
                 #self.get_logger().info("Steering angle: {:.3f}".format(twist_object.angular.z))
                 self.pub.publish(twist_object)
-        
+        else:
+            print("Line follwer stopped")
+
+
 
 def main(args=None):
 

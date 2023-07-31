@@ -8,6 +8,7 @@ from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, Exec
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 def generate_launch_description():
+
     wall_following_node = Node(
         package="capstone_project",
         executable="wall_follower",
@@ -23,7 +24,7 @@ def generate_launch_description():
         )
     
     pure_pursuit_node = Node(
-        package="Capstone_Project",
+        package="capstone_project",
         executable="pure_pursuit",
         name="pure_pursuit",
         output="screen",
@@ -42,13 +43,22 @@ def generate_launch_description():
         name="classify_resnet50",
         output="screen",
         )
+    
+    go_to_waypoint_node = Node(
+        package="capstone_project",
+        executable="go_to_waypoint",
+        name="go_to_waypoint",
+        output="screen",
+    )
        
        
     return LaunchDescription(
         [
             wall_following_node,
             line_following_node,
+            pure_pursuit_node,
             state_machine,
-            classify_resnet50
+            classify_resnet50,
+            go_to_waypoint_node,
         ]
     )

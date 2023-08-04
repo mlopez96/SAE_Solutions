@@ -28,6 +28,7 @@ class ResNet50_Classifier(Node):
         self.sess = sess
         self.model = ResNet50(weights='imagenet')
         self.graph = tf.compat.v1.get_default_graph()
+
              
 
     def callback(self, image_msg):

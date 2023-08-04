@@ -9,6 +9,8 @@ from sensor_msgs.msg import LaserScan
 from geometry_msgs.msg import Twist
 from rclpy.qos import QoSProfile
 from rclpy.qos import ReliabilityPolicy
+from std_msgs.msg import String
+
 
 class WallFollower(Node):
     def __init__(self):
@@ -23,6 +25,11 @@ class WallFollower(Node):
         self.previous_lookahead_right = 0
         self.previous_distance_left = 0
         self.previous_lookahead_left = 0
+
+        #String
+        self.wall_following_completed_sub = self.create_subscription(String, '/state_machine/wf_task', self.wall_follower_callback, 10)
+        
+
         
         # Vehicle parameters
         self.ANGLE_RANGE = 360          
@@ -39,6 +46,13 @@ class WallFollower(Node):
         
         # Container for scan data
         self.data = None
+        
+    def wall_follower_callback(self, data):
+        self.wall_follwer_data = data
+        if self.wall_follwer_data == 'wf_task_complete':
+            self.get_logger().info("WallFollowerEnded".format())
+            self.WallFollower.destroy_node(self)
+
     
     def get_index(self, angle):
         

@@ -21,6 +21,8 @@ from geometry_msgs.msg import PoseWithCovarianceStamped
 from geometry_msgs.msg import PoseStamped
 from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import NavigateToPose
+from std_msgs.msg import String
+
 
 import rclpy
 
@@ -41,6 +43,10 @@ class BasicNavigator(Node):
         self.result_future = None
         self.feedback = None
         self.status = None
+        self.go_to_waypoint_data = None
+
+        self.go_to_waypoint_started_sub = self.create_subscription(String, '/state_machine/go_to_waypoint', self.go_to_waypoint_callback, 10)
+
 
         amcl_pose_qos = QoSProfile(
           durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
@@ -60,6 +66,9 @@ class BasicNavigator(Node):
         self.initial_pose_pub = self.create_publisher(PoseWithCovarianceStamped,
                                                       'initialpose',
                                                       10)
+
+    def go_to_waypoint_callback(self, data):
+        self.go_to_waypoint_data = data
 
     def setInitialPose(self, initial_pose):
         self.initial_pose_received = False
@@ -123,11 +132,20 @@ class BasicNavigator(Node):
     def waitUntilNav2Active(self):
         self._waitForNodeToActivate('amcl')
         self._waitForInitialPose()
-        self._waitForNodeToActivate('bt_navigator')
-        self.info('Nav2 is ready for use!')
+        if self.go_to_waypoint_data == 'going_to_waypoint':
+            self._waitForNodeToActivate('bt_navigator')
+            self.info('Nav2 is ready for use!')
+        else:
+            self.info('Nav2 is not ready')
+            
         return
 
     def _waitForNodeToActivate(self, node_name):
+        # Twist 0
+        twist_object = Twist()
+        twist_object.linear.x = 0.0
+        twist_object.angular.z = 0.0
+        
         # Waits for the node within the tester namespace to become active
         self.debug('Waiting for ' + node_name + ' to become active..')
         node_service = node_name + '/get_state'
@@ -149,10 +167,10 @@ class BasicNavigator(Node):
 
     def _waitForInitialPose(self):
         while not self.initial_pose_received:
-            self.info('Setting initial pose')
-            self._setInitialPose()
-            self.info('Waiting for amcl_pose to be received')
-            rclpy.spin_once(self, timeout_sec=1)
+                self.info('Setting initial pose')
+                self._setInitialPose()
+                self.info('Waiting for amcl_pose to be received')
+                rclpy.spin_once(self, timeout_sec=1)
         return
 
     def _amclPoseCallback(self, msg):
@@ -207,8 +225,8 @@ def main(argv=sys.argv[1:]):
     goal_pose = PoseStamped()
     goal_pose.header.frame_id = 'map'
     goal_pose.header.stamp = navigator.get_clock().now().to_msg()
-    goal_pose.pose.position.x = 1.0
-    goal_pose.pose.position.y = 1.0
+    goal_pose.pose.position.x = 2.0
+    goal_pose.pose.position.y = 2.0
     goal_pose.pose.orientation.w = 180.0
     navigator.goToPose(goal_pose)
 

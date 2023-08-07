@@ -16,20 +16,7 @@ Installed [F1-tenth Simulator](https://github.com/SAE-Robotics-Bootcamp/f110-sim
 Installed OpenCV  
 Installed Qt4  
 
-Remember warnings can be ignored for the ROS_Bridge
-
-# Testing ROS Noetic & ROS_Bridge before build
-Should be able to control the racecar with A,S,W,D controls in the terminal
-```
-$ source ~/ros_source.sh
-$ roslaunch race f1_tenth.launch
-```
-Should display ros_bridge pairs, showing AckermannMessage to indicate a successful bridge
-```
-$ source ~/bridge_source.sh
-$ ros2 run ros1_bridge dynamic_bridge --print-pairs
-```
-
+Remember warnings can be ignored for the ROS_Bridge  
 
 # Instructions
 Once build is complete, run three separate terminals  

@@ -2,7 +2,11 @@
 This repository contains a ROS2 package that can be used to manipulate camera data to find out the geometric form of the lane lines to implement a simple lane keeping algorithm.  
 
 Video demonstrating a vehicle completing a lap:
-[Insert video link here]
+
+
+https://github.com/mlopez96/SAE_Solutions/assets/26072511/5c064485-6ffa-477d-bb3c-1fc4401b3e40
+
+
 
 # Prerequisites
 Running Ubuntu 20.04    

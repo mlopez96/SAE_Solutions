@@ -1,5 +1,5 @@
-# Advanced_Lane_Keeping
-This repository contains a ROS package that can be used to implement a lane keeping algorithm.
+# Advanced_Lane_Detection
+This repository contains a ROS2 package that can be used to manipulate camera data to find out the geometric form of the lane lines to implement a simple lane keeping algorithm.  
 
 Video demonstrating a vehicle completing a lap:
 [Insert video link here]

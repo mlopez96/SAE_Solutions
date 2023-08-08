@@ -7,6 +7,8 @@ predictions on the terminal.
 https://github.com/mlopez96/SAE_Solutions/assets/26072511/e88f06b1-d101-4c5e-87d6-656578b2a150
 ### Example 2
 https://github.com/mlopez96/SAE_Solutions/assets/26072511/5aa66959-561b-48f3-b6e1-75b9397c584e
+### Example 3
+https://github.com/mlopez96/SAE_Solutions/assets/133263123/fc737468-dfca-444f-a48b-e6ca0901404f
 
 
 

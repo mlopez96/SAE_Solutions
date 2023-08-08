@@ -25,3 +25,15 @@ https://www.youtube.com/watch?v=E_hD9kfBCuk
 ![Screenshot from 2023-08-07 20-53-16](https://github.com/mlopez96/SAE_Solutions/assets/26072511/c2b56226-f2c4-45c0-b515-895f3cb86df5)
 
 https://www.youtube.com/watch?v=KiYYwLnoIsk
+
+## Future Capability
+Fail-safes are essential for any robotic program, as they can help to prevent accidents and damage. In the case of a turtlebot3 for ROS2, some possible fail-safes could include:
+
+If the wall follower is no longer detected, the robot could switch to line following. This would allow the robot to continue to navigate even if the wall is no longer visible.  
+
+If the line follower is also not detected, the robot could switch to object detection. This would allow the robot to find landmarks and navigate around obstacles.  
+
+If object detection is not successful, the robot could enter a safe mode. This would involve stopping the robot and waiting for human intervention.  
+
+It is important to carefully consider the possible failure modes of a robotic program and to implement fail-safes that will address these modes. By doing so, you can help to ensure the safety of the robot and the people around it.
+Use a variety of sensors to increase the robustness of the program. This will help to ensure that the program can continue to function even if one sensor fails  

@@ -17,6 +17,11 @@ Overall, the robot was able to successfully complete all three tasks. The robot 
 It is important to test the robot in a real-world environment before deploying it to production. This is because there are a lot of factors that can affect the robot's performance, such as the lighting conditions, the surface that the robot is moving on, and the presence of obstacles. Despite these challenges, we were able to successfully complete this project. We were able to identify and fix a variety of bugs in our code. We were able to use a variety of debugging techniques, such as printing out the values of variables, adding print statements to your code, and using a debugger. 
 
 ## Videos
+
+### Final Capstone Run
+![Screenshot from 2023-08-08 17-29-32](https://github.com/mlopez96/SAE_Solutions/assets/26072511/c66c8082-dfb4-4517-9cfc-16b1e961150d)  
+https://www.youtube.com/shorts/f1H5uRYWIo4
+
 ### Part 1:  
 ![Screenshot from 2023-08-07 20-52-41](https://github.com/mlopez96/SAE_Solutions/assets/26072511/ad8516d3-0f0b-4868-86bb-b1c06db395fa)
 
